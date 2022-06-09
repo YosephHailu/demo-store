@@ -56,11 +56,13 @@ class ProductController extends Controller
             'qty' => $request->qty,
             'description' => $request->description,
             'product_category_id' => 2,
-            'store_id' => 1,
+            'store_id' => auth()->user()->store->id,
             'image' => $request->image ?? "placeholder.png",
         ]);
 
-        return redirect()->route('product.index')->with('success', 'Product created successfully');
+        if(auth()->user()->isAdmin())
+            return redirect()->route('product.index')->with('success', 'Product created successfully');
+        return redirect()->route('store.mystore')->with('success', 'Product created successfully');
     }
 
     /**

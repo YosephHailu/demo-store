@@ -18,4 +18,14 @@ class Product extends Model
         'product_category_id',
         'store_id',
     ];
+
+    /**
+     * Get the productCategory that owns the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function productCategory(): BelongsTo
+    {
+        return $this->belongsTo(ProductCategory::class);
+    }
 }

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('phone')->nullable();
             $table->string('photo')->nullable();
+
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

@@ -26,7 +26,7 @@
 </div>
 <div class="mt-3 row">
     @foreach ($stores as $store)
-    <div class="col-4">
+    <div class="col-4 mb-4">
         <div class="card shadow-lg p-0">
             <img src="https://previews.agefotostock.com/previewimage/medibigoff/83666c370e684f7cd6f1c3e21bf570a2/yb3-2361510.jpg"
                 class="card-img-top" alt="Chicago Skyscrapers" />

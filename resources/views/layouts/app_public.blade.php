@@ -74,7 +74,7 @@
         </nav>
         <!-- Navbar -->
 
-        <main style="flex-grow: 1">
+        <main style="flex-grow: 1" class="bg-light">
             @yield('content')
         </main>
     </div>

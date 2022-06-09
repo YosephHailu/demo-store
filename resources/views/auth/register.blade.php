@@ -30,7 +30,7 @@
 
 @section('content')
 <section class="h-100 gradient-form" style="background-color: #eee;">
-    <div class="container py-5 h-100">
+    <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-10">
                 <div class="card rounded-3 text-black">
@@ -117,7 +117,7 @@
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 py-4"
                                             type="submit">
                                             @isset($user)
                                                 Update

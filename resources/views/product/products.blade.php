@@ -27,8 +27,8 @@
 <div class="mt-3 row">
     @foreach ($products as $product)
     <div class="col-2">
-        <div class="card shadow-lg p-0">
-            <img src="https://previews.agefotostock.com/previewimage/medibigoff/83666c370e684f7cd6f1c3e21bf570a2/yb3-2361510.jpg"
+        <div class="card shadow-lg p-0 mb-4">
+            <img src="{{$product->image}}"
                 class="card-img-top" alt="Chicago Skyscrapers" />
 
             <div class="card-body pb-0" style="position: relative; padding-left: 14px">
@@ -43,7 +43,7 @@
                 </a>
 
                 <h5 class="card-title">{{ $product->name }}</h5>
-                <p class="card-text text-muted">{{ $product->description }}</p>
+                <p class="card-text text-muted">{{ Str::limit($product->description, 30, '...') }}</p>
             </div>
             <hr class="my-1">
             <ul class="list-group list-group-light list-group-small">

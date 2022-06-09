@@ -20,10 +20,9 @@ class ProductCategoryController extends Controller
     public function index(Request $request)
     {
         //
+        $product_categories = auth()->user()->store->productCategories();
         if($request->q) {
-            $product_categories = ProductCategory::where('name', 'like', '%'.$request->q.'%');
-        } else {
-            $product_categories = ProductCategory::query();
+            $product_categories::where('name', 'like', '%'.$request->q.'%');
         }
 
         return view('product_category.product_categories')->with([
@@ -54,7 +53,7 @@ class ProductCategoryController extends Controller
         $product_category = ProductCategory::create([
             'name' => $request->name,
             'description' => $request->description,
-            'store_id' => 1
+            'store_id' => auth()->user()->store->id
         ]);
 
         return redirect()->route('product_category.index')->with('success', 'Product Category created successfully');
@@ -80,12 +79,10 @@ class ProductCategoryController extends Controller
     public function edit(ProductCategory $productCategory, Request $request)
     {
         //
+        $product_categories = auth()->user()->store->productCategories();
         if($request->q) {
-            $product_categories = ProductCategory::where('name', 'like', '%'.$request->q.'%');
-        } else {
-            $product_categories = ProductCategory::query();
+            $product_categories::where('name', 'like', '%'.$request->q.'%');
         }
-
         return view('product_category.product_categories')->with([
             'product_category' => $productCategory,
             'product_categories' => $product_categories->get()
@@ -105,7 +102,6 @@ class ProductCategoryController extends Controller
         $productCategory->update([
             'name' => $request->name,
             'description' => $request->description,
-            'store_id' => 1
         ]);
 
         return redirect()->route('product_category.index')->with('success', 'Product Category updated successfully');

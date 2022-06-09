@@ -1,4 +1,4 @@
-@extends('layouts.app_empty')
+@extends('layouts.app_public')
 
 @push('top-scripts')
 <style>

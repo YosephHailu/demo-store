@@ -53,6 +53,7 @@ class StoreController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'phone' => $request->phone,
+            'user_id' => auth()->user()->id
             // 'photo' => $request->photo
         ]);
 
@@ -123,5 +124,17 @@ class StoreController extends Controller
     public function destroy(Store $store)
     {
         //
+    }
+
+    public function myStore()
+    {
+        //
+        $store = auth()->user()->store;
+        $products = $store->products;
+
+        return view('store.mystore')->with([
+            'store' => $store,
+            'products' => $products
+        ]);
     }
 }
