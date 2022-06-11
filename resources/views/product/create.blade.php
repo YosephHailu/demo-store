@@ -54,10 +54,10 @@
                             </div>
 
                             @isset($product)
-                            <form method="POST" action="{{ route('product.update', $product->id) }}">
+                            <form method="POST" action="{{ route('product.update', $product->id) }}" enctype="multipart/form-data">
                                 @method('put')
                                 @else
-                                <form method="POST" action="{{ route('product.store') }}">
+                                <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                                     @endisset
                                     @csrf
 
@@ -127,7 +127,13 @@
                                     <label class="form-label" for="form2Example22">Image</label>
                                     <div class="form-outline mb-4">
                                         <input id="file" type="file"
-                                            class="form-control @error('file') is-invalid @enderror" name="file">
+                                            class="form-control @error('file') is-invalid @enderror" name="file_upload">
+
+                                        @error('file_upload')
+                                        <span class="invalid-feedback pb-3" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
 
 

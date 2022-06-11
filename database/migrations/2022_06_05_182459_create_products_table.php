@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('price');
             $table->string('qty');
-            $table->string('image');
             $table->string('description')->nullable();
 
             $table->foreignId('product_category_id')->constrained();
-            $table->foreignId('store_id')->constrained();
+            $table->foreignId('store_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

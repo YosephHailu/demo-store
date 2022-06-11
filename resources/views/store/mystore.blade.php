@@ -13,7 +13,7 @@
 <div class="row">
     <div class="col-4 mb-4">
         <div class="card shadow-lg p-0" style="height: 85vh">
-            <img src="https://previews.agefotostock.com/previewimage/medibigoff/83666c370e684f7cd6f1c3e21bf570a2/yb3-2361510.jpg"
+            <img src="{{ $store->first_photo_url }}"
                 class="card-img-top" alt="Chicago Skyscrapers" />
 
             <div class="card-body" style="position: relative">
@@ -30,11 +30,6 @@
                 <h5 class="card-title">{{ $store->name }}</h5>
                 <p class="card-text text-muted">{{ $store->description }}</p>
             </div>
-            <ul class="list-group list-group-light list-group-small">
-                <li class="list-group-item px-4">Cras justo odio</li>
-                <li class="list-group-item px-4">Dapibus ac facilisis in</li>
-                <li class="list-group-item px-4">Vestibulum at eros</li>
-            </ul>
         </div>
     </div>
     <div class="col-8">
@@ -58,7 +53,7 @@
             @foreach ($products as $product)
             <div class="col-3">
                 <div class="card shadow-lg p-0 mb-4">
-                    <img src="{{$product->image}}" class="card-img-top" alt="Chicago Skyscrapers" />
+                    <img src="{{$product->first_photo_url}}" class="card-img-top" alt="Chicago Skyscrapers" />
 
                     <div class="card-body pb-0" style="position: relative; padding-left: 14px">
                         <a href="{{ route('product.create') }}" title="Register product"

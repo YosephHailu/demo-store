@@ -36,9 +36,10 @@
             </div>
         </main>
     </div>
+    <script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
     <script src="{{asset('assets/js/mdb.min.js')}}"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    @method("bottom-scripts")
+    <script src="{{asset('assets/js/alpine.js')}}"></script>
+    @stack("bottom-scripts")
 </body>
 
 </html>

@@ -14,6 +14,7 @@ class ProductCategory extends Model
         'name',
         'description',
         'store_id',
+        'status',
     ];
 
     /**

@@ -26,9 +26,9 @@
 </div>
 <div class="mt-3 row">
     @foreach ($products as $product)
-    <div class="col-2">
+    <div  style="max-width: 300px;">
         <div class="card shadow-lg p-0 mb-4">
-            <img src="{{$product->image}}"
+            <img src="{{ $product->first_photo_url }}" style="max-height: 200px"
                 class="card-img-top" alt="Chicago Skyscrapers" />
 
             <div class="card-body pb-0" style="position: relative; padding-left: 14px">

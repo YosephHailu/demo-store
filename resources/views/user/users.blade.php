@@ -29,7 +29,6 @@
                 <thead class="bg-light">
                     <th><b>Name</b></th>
                     <th><b>Email</b></th>
-                    <th><b>Role</b></th>
                     <th></th>
                 </thead>
                 <tbody>
@@ -37,7 +36,6 @@
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>Manager</td>
                         <td class="w-12" style="max-width: 65px;">
                             <a href="{{ route('user.edit', $user->id) }}" class="btn btn-indigo btn-floating mx-2">
                                 <i class="fas fa-pen"></i>

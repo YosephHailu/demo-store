@@ -30,7 +30,7 @@
 <body>
     <div id="app">
         <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light bg-white fixed-top ">
             <div class="container-fluid justify-content-between">
                 <!-- Left elements -->
                 <div class="d-flex">
@@ -59,9 +59,10 @@
                 <!-- Right elements -->
                 <ul class="navbar-nav flex-row">
                     <li class="nav-item me-3 me-lg-1">
-                        <a class="nav-link" href="{{ route('logout') }}" title="Logout">
+                        <a class="nav-link" href="{{ route('cart.my-cart') }}" title="Logout">
                             <span><i class="fas fa-shopping-cart fa-lg"></i></span>
-                            <span class="badge rounded-pill badge-notification bg-danger">2</span>
+                            <span
+                                class="badge rounded-pill badge-notification bg-danger cart-counter">{{\App\Models\Cart::count()}}</span>
 
                         </a>
                     </li>
@@ -74,13 +75,32 @@
         </nav>
         <!-- Navbar -->
 
-        <main style="flex-grow: 1" class="bg-light">
+        <main style="flex-grow: 1; margin-top: 80px" class="bg-light">
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('assets/jquery/jquery.min.js') }}"></script>
     <script src="{{asset('assets/js/mdb.min.js')}}"></script>
+    <script src="{{asset('assets/js/alpine.js')}}"></script>
 
-    @method("bottom-scripts")
+    <script>
+        const rootApiUrl = "{{ url('/') }}/api";
+
+        function addToChart(product) {
+            console.log(product);
+
+            $.post(rootApiUrl + "/store", product, function(response) {
+                    let cartCounter = $('.cart-counter');
+                    cartCounter.text(response.cart_count);
+                })
+            .fail(function(error) {
+                console.log(error)
+            })
+
+        }
+
+    </script>
+    @stack("bottom-scripts")
 </body>
 
 </html>

@@ -24,44 +24,16 @@
       </div>
       <!-- Left elements -->
   
-      <!-- Center elements -->
-      <ul class="navbar-nav flex-row d-none d-md-flex">
-        <li class="nav-item me-3 me-lg-1 active">
-          <a class="nav-link" href="#">
-            <span><i class="fas fa-home fa-lg"></i></span>
-            <span class="badge rounded-pill badge-notification bg-danger">1</span>
-          </a>
-        </li>
-  
-        <li class="nav-item me-3 me-lg-1">
-          <a class="nav-link" href="#">
-            <span><i class="fas fa-flag fa-lg"></i></span>
-          </a>
-        </li>
-  
-        <li class="nav-item me-3 me-lg-1">
-          <a class="nav-link" href="#">
-            <span><i class="fas fa-video fa-lg"></i></span>
-          </a>
-        </li>
-  
-        <li class="nav-item me-3 me-lg-1">
-          <a class="nav-link" href="#">
-            <span><i class="fas fa-shopping-bag fa-lg"></i></span>
-          </a>
-        </li>
-  
-        <li class="nav-item me-3 me-lg-1">
-          <a class="nav-link" href="#">
-            <span><i class="fas fa-users fa-lg"></i></span>
-            <span class="badge rounded-pill badge-notification bg-danger">2</span>
-          </a>
-        </li>
-      </ul>
-      <!-- Center elements -->
-  
       <!-- Right elements -->
       <ul class="navbar-nav flex-row">
+        @if(session()->has('user'))
+        <li class="nav-item me-3 me-lg-1">
+          <a class="nav-link" href="{{ route('store.logout', session()->has('user')) }}" title="Logout of store">
+            <span><i class="fas fa-sign-out fa-lg"></i></span> Return to account
+          </a>
+        </li>
+        @endif
+        <span class="mt-2">|</span>
         <li class="nav-item me-3 me-lg-1">
           <a class="nav-link d-sm-flex align-items-sm-center" href="#">
             <img

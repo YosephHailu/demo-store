@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description')->nullable();
             $table->foreignId('store_id')->constrained();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductCategory;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('landing');
     }
 
     /**
@@ -28,8 +29,9 @@ class HomeController extends Controller
     }
 
     public function landing() {
-        $categories = ProductCategory::paginate(11);
+        $categories = ProductCategory::paginate(12);
+        $stores = Store::paginate(12);
 
-        return view('landing')->with('categories', $categories);
+        return view('landing')->with(['categories' => $categories, 'stores' => $stores]);
     }
 }

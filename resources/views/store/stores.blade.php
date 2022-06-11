@@ -12,7 +12,7 @@
 </div>
 <div class="card">
     <div class="card-header d-flex pb-0">
-        <h3 class="card-title font-bold">MY STORES</h3>
+        <h3 class="card-title font-bold">ALL STORES</h3>
 
         <div class="right" style="margin-left: auto !important">
             <form class=" input-group w-auto my-auto d-none d-sm-flex">
@@ -28,30 +28,42 @@
     @foreach ($stores as $store)
     <div class="col-4 mb-4">
         <div class="card shadow-lg p-0">
-            <img src="https://previews.agefotostock.com/previewimage/medibigoff/83666c370e684f7cd6f1c3e21bf570a2/yb3-2361510.jpg"
+            <img src="{{ $store->first_photo_url }}"
                 class="card-img-top" alt="Chicago Skyscrapers" />
 
             <div class="card-body" style="position: relative">
-                <a href="{{ route('store.create') }}" title="Register store" class="btn btn-floating btn-primary btn-lg"
+                <a href="{{ route('store.show', $store->id) }}" title="Register store"
+                    class="btn btn-floating btn-primary btn-lg"
                     style="background-color: rgb(244, 67, 54); right: 10px; top: -20px; position: absolute;">
                     <i class="fas fa-trash"></i>
                 </a>
 
-                <a href="{{ route('store.edit', $store->id) }}" title="Register store" class="btn btn-floating btn-primary btn-lg"
-                    style="right: 70px; top: -20px; position: absolute;">
+                <a href="{{ route('store.edit', $store->id) }}" title="Register store"
+                    class="btn btn-floating btn-primary btn-lg" style="right: 70px; top: -20px; position: absolute;">
                     <i class="fas fa-pen"></i>
+                </a>
+
+                <a href="{{ route('store.login', $store->id) }}" title="Register store"
+                    class="btn btn-floating btn-secondary btn-lg" style="right: 130px; top: -20px; position: absolute;">
+                    <i class="fas fa-lock"></i>
                 </a>
 
                 <h5 class="card-title">{{ $store->name }}</h5>
                 <p class="card-text text-muted">{{ $store->description }}</p>
             </div>
-            <ul class="list-group list-group-light list-group-small">
-                <li class="list-group-item px-4">Cras justo odio</li>
-                <li class="list-group-item px-4">Dapibus ac facilisis in</li>
-                <li class="list-group-item px-4">Vestibulum at eros</li>
-            </ul>
         </div>
     </div>
     @endforeach
 </div>
 @endsection
+
+@push('bottom-scripts')
+<script>
+    function deleteStore(store) {
+        let modal = $('#exampleModal');
+        modal.show()
+        console.log(store)
+    }
+
+</script>
+@endpush

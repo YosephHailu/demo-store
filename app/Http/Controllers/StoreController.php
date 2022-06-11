@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Store;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class StoreController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth'])->only('create', 'edit', 'update', 'destroy');
+        $this->middleware(['auth']);
     }
     /**
      * Display a listing of the resource.
@@ -57,6 +60,8 @@ class StoreController extends Controller
             // 'photo' => $request->photo
         ]);
 
+        $store->addMediaFromRequest('file_upload')->toMediaCollection('store');
+
         return redirect(route('store.index'))->with([
             'success' => 'Store created successfully'
         ]);
@@ -70,13 +75,15 @@ class StoreController extends Controller
      */
     public function show(Store $store)
     {
-        //
+        return view('store.show')->with(['store' => $store]);
     }
 
     public function detail(Store $store)
     {
         //
-        return $store;
+        $products = $store->products();
+        $categories = $store->productCategories;
+        return view('store.detail')->with(['store' => $store, 'products' => $products->paginate(25), 'categories' => $categories]);
     }
 
     /**
@@ -107,8 +114,10 @@ class StoreController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'phone' => $request->phone,
-            // 'photo' => $request->photo
         ]);
+
+        if($request->file_upload)
+            $store->addMediaFromRequest('file_upload')->toMediaCollection('store');
 
         return redirect(route('store.index'))->with([
             'success' => 'Store updated successfully'
@@ -124,17 +133,44 @@ class StoreController extends Controller
     public function destroy(Store $store)
     {
         //
+        $store->products()->delete();
+        $store->productCategories()->delete();
+        $store->delete();
+
+        return redirect(route('store.index'))->with([
+            'success' => 'Store deleted successfully'
+        ]);
     }
 
     public function myStore()
     {
         //
         $store = auth()->user()->store;
+        if(!$store) {
+            return redirect(route('store.create'));
+        }
         $products = $store->products;
 
         return view('store.mystore')->with([
             'store' => $store,
             'products' => $products
         ]);
+    }
+
+    public function login(Store $store)
+    {
+        Session::put('user', auth()->user());
+        Auth::login(User::find($store->user->id));
+
+        return redirect(route('store.mystore'));
+    }
+
+    public function logout(Store $store)
+    {
+        $user = Session::get('user');
+        Session::remove('user');
+        Auth::login($user);
+
+        return redirect(route('store.index'));
     }
 }

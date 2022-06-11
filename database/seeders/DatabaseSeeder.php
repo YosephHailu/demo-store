@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         if(!User::exists())
             \App\Models\User::factory(1)->create();
             
-        \App\Models\Store::factory(15)->create();
-        \App\Models\ProductCategory::factory(15)->create();
-        \App\Models\Product::factory(100)->create();
+        \App\Models\Store::factory(1)->create();
+        // \App\Models\ProductCategory::factory(15)->create();
+        // \App\Models\Product::factory(100)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

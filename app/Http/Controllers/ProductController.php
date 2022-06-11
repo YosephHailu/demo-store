@@ -50,19 +50,22 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
-        $store = Product::create([
+        $product = Product::create([
             'name' => $request->name,
             'price' => $request->price,
             'qty' => $request->qty,
             'description' => $request->description,
-            'product_category_id' => 2,
+            'product_category_id' => ProductCategory::first()->id,
             'store_id' => auth()->user()->store->id,
-            'image' => $request->image ?? "placeholder.png",
         ]);
+
+        if($request->file_upload)
+            $product->addMediaFromRequest('file_upload')->toMediaCollection('store');
 
         if(auth()->user()->isAdmin())
             return redirect()->route('product.index')->with('success', 'Product created successfully');
-        return redirect()->route('store.mystore')->with('success', 'Product created successfully');
+        else
+            return redirect()->route('store.mystore')->with('success', 'Product created successfully');
     }
 
     /**
@@ -105,10 +108,11 @@ class ProductController extends Controller
             'price' => $request->price,
             'qty' => $request->qty,
             'description' => $request->description,
-            'product_category_id' => 2,
-            'store_id' => 1,
-            'image' => $request->image ?? "placeholder.png",
-        ]);
+            'product_category_id' => ProductCategory::first()->id,
+            ]);
+
+        if($request->file_upload)
+            $product->addMediaFromRequest('file_upload')->toMediaCollection('store');
 
         return redirect()->route('product.index')->with('success', 'Product updated successfully');
     }

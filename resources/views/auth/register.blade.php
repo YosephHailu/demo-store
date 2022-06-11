@@ -103,6 +103,9 @@
                                             >
                                         <label class="form-label" for="form2Example22">Password</label>
                                     </div>
+                                    @if (request()->has('admin'))
+                                        <input type="hidden" name="admin" value="true">
+                                    @endif
 
                                     <div class="form-outline mb-4">
                                         <input id="password_confirmation" type="password"

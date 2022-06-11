@@ -13,12 +13,7 @@
         Dashboard
       </a>
     </li>
-    <li>
-      <a href="{{ route('user.index') }}" class="nav-link link-dark {{ (request()->is('user*')) ? 'active' : '' }}">
-        <i class="fa fa-dashboard me-2"></i>
-        Users
-      </a>
-    </li>
+    @if (Auth::user()->isAdmin())
     <li>
       <a href="{{ route('product.index') }}"
         class="nav-link link-dark {{ (request()->is('product*')) ? 'active' : '' }}">
@@ -26,11 +21,22 @@
         Products
       </a>
     </li>
-    @if (Auth::user()->isAdmin())
     <li>
       <a href="{{ route('store.index') }}" class="nav-link link-dark {{ (request()->is('store*')) ? 'active' : '' }}">
         <i class="fa fa-shop me-2"></i>
         Stores
+      </a>
+    </li>
+    <li>
+      <a href="{{ route('user.index') }}" class="nav-link link-dark {{ (request()->is('user*')) ? 'active' : '' }}">
+        <i class="fa fa-dashboard me-2"></i>
+        Users
+      </a>
+    </li>
+    <li>
+      <a href="{{ route('user.admins') }}" class="nav-link link-dark {{ (request()->is('admins*')) ? 'active' : '' }}">
+        <i class="fa fa-dashboard me-2"></i>
+        Admins
       </a>
     </li>
     @else

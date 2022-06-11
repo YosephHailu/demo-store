@@ -21,7 +21,6 @@ class StoreFactory extends Factory
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             'phone' => $this->faker->phoneNumber(),
-            'photo' => $this->faker->imageUrl(),
             'user_id' => 1,
         ];
     }
