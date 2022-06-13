@@ -108,7 +108,7 @@
                         <table class="table">
                             <thead class="bg-light">
                                 <th><b>Name</b></th>
-                                <th><b>Store</b></th>
+                                <th><b>Status</b></th>
                                 <th style="max-width: 65px;"></th>
                             </thead>
                             <tbody>
@@ -117,8 +117,15 @@
                                     <td>{{ $product_category->name }} <br>
                                         <small class="text-muted">{{ $product_category->description }}</small>    
                                     </td>
-                                    <td>{{ $product_category->store->name }}</td>
+                                    <td> <span class="p-1 {{ $product_category->is_active ? "bg-success" : "bg-danger" }}">
+                                        {{ $product_category->is_active ? "Active" : "Inactive" }}
+                                    </span> </td>
                                     <td class="d-flex pb-4" >
+                                        <a href="{{ route('product_category.toggle', $product_category->id) }}"
+                                            class="btn btn-indigo btn-floating mx-2" title="{{ $product_category->is_active ? "hide" : "show" }}">
+                                            <i class="fas fa-eye{{ $product_category->is_active ? "-slash" : "" }}"></i>
+                                        </a>
+
                                         <a href="{{ route('product_category.edit', $product_category->id) }}"
                                             class="btn btn-indigo btn-floating mx-2" style="">
                                             <i class="fas fa-pen"></i>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Store;
 use Illuminate\Http\Request;
@@ -25,13 +26,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if(!auth()->user()->store) {
+            return redirect()->route('store.mystore');
+        }
+        $store = auth()->user()->store;
+        return view('home')->with(['store' => $store]);
     }
 
     public function landing() {
-        $categories = ProductCategory::paginate(12);
+        $categories = ProductCategory::where('is_active', true)->paginate(12);
         $stores = Store::paginate(12);
+        $products = Product::query();
 
-        return view('landing')->with(['categories' => $categories, 'stores' => $stores]);
+        return view('landing')->with(['categories' => $categories, 'stores' => $stores, 'products' => $products]);
     }
 }

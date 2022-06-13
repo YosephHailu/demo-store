@@ -48,9 +48,9 @@
                         <div class="card-body p-md-5 mx-md-4">
 
                             <div class="text-center">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                                    style="width: 185px;" alt="logo">
-                                <h4 class="mt-1 mb-5 pb-1">Add Store Information</h4>
+                                <img src="https://gebeya.com/wp-content/uploads/2022/01/Submit-your-application-%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F-2assets.png"
+                                    style="width: 185px;" alt="logo" class="mb-2">
+                                <h4 class="mt-1 mb-5 pb-1 uppercase"><b>REGISTER PRODUCT</b></h4>
                             </div>
 
                             @isset($product)
@@ -63,6 +63,20 @@
 
                                     <p>Please fill your product information</p>
 
+                                    <div class="mb-4">
+                                        <label class="form-label" >Product category</label>
+                                        <select name="product_category_id" class="form-control">
+                                            <option value="">Select category</option>
+                                            @foreach ($productCategories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('product_category_id')
+                                        <span class="invalid-feedback pb-3" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
 
                                     <div class="form-outline mb-4">
                                         <input id="name" type="name"
@@ -135,7 +149,6 @@
                                         </span>
                                         @enderror
                                     </div>
-
 
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 p-3"

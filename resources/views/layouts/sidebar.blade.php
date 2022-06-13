@@ -8,7 +8,7 @@
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li>
-      <a href="#" class="nav-link link-dark {{ (request()->is('dashboard*')) ? 'active' : '' }}">
+      <a href="{{ route('home') }}" class="nav-link link-dark {{ (request()->is('home*')) ? 'active' : '' }}">
         <i class="fa fa-dashboard me-2"></i>
         Dashboard
       </a>

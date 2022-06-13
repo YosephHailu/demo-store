@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -32,6 +33,26 @@ class Product extends Model implements HasMedia
     public function productCategory(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class);
+    }
+
+    /**
+     * Get the store that owns the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function store(): BelongsTo
+    {
+        return $this->belongsTo(Store::class);
+    }
+
+    /**
+     * Get all of the carts for the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function carts(): HasMany
+    {
+        return $this->hasMany(Cart::class);
     }
 
     public function registerMediaConversions(Media $media = null): void

@@ -50,10 +50,10 @@
                             <div class="text-center">
                                 <img src="https://gebeya.com/wp-content/uploads/2022/01/Submit-your-application-%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F-2assets.png"
                                     style="width: 185px;" alt="logo" class="mb-3">
-                                <h4 class="mt-1 mb-5 pb-1"><b>DELETE STORE</b></h4>
+                                <h4 class="mt-1 mb-5 pb-1"><b>DELETE PRODUCT</b></h4>
                             </div>
 
-                            <form method="POST" action="{{ route('store.destroy', $store->id) }}"
+                            <form method="POST" action="{{ route('product.destroy', $product->id) }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('delete')
@@ -62,13 +62,13 @@
 
                                     <div class="form-outline mb-4">
 
-                                        <input id="name" type="name"
-                                            class="form-control @error('name') is-invalid @enderror" name="name"
-                                            value="{{ $store->name ?? old('name') }}" required autocomplete="name"
+                                        <input id="email" type="email"
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                             required autocomplete="email"
                                             autofocus>
-                                        <label class="form-label" for="form2Example11">Enter name</label>
+                                        <label class="form-label" for="form2Example11">Enter email</label>
 
-                                        @error('name')
+                                        @error('email')
                                         <span class="invalid-feedback pb-3" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -77,13 +77,13 @@
                                 </div>
 
                                 <div>
-                                    <p>Enter store name <b>{{ $store->name }}</b> to continue:</p>
+                                    <p>Enter product name <b>{{ $product->name }}</b> to continue:</p>
 
                                     <div class="form-outline mb-4">
 
                                         <input id="name" type="name"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
-                                            value="{{ $store->name ?? old('name') }}" required autocomplete="name"
+                                            required autocomplete="name"
                                             autofocus>
                                         <label class="form-label" for="form2Example11">Enter name</label>
 

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreStoreRequest;
+use App\Models\Cart;
+use App\Models\ProductCategory;
 use App\Models\Store;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,7 +15,7 @@ class StoreController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth']);
+        $this->middleware(['auth'])->except(['detail', 'products', 'productCategoryListing']);
     }
     /**
      * Display a listing of the resource.
@@ -49,20 +52,20 @@ class StoreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStoreRequest $request)
     {
         //
-        $store = Store::create([
+        $store = Store::firstOrCreate([
+            'user_id' => auth()->user()->id
+        ], [
             'name' => $request->name,
             'description' => $request->description,
             'phone' => $request->phone,
-            'user_id' => auth()->user()->id
-            // 'photo' => $request->photo
         ]);
 
         $store->addMediaFromRequest('file_upload')->toMediaCollection('store');
 
-        return redirect(route('store.index'))->with([
+        return redirect(route('store.mystore'))->with([
             'success' => 'Store created successfully'
         ]);
     }
@@ -133,6 +136,7 @@ class StoreController extends Controller
     public function destroy(Store $store)
     {
         //
+        Cart::whereIn('product_id', $store->products()->pluck('id'))->delete();
         $store->products()->delete();
         $store->productCategories()->delete();
         $store->delete();
@@ -172,5 +176,36 @@ class StoreController extends Controller
         Auth::login($user);
 
         return redirect(route('store.index'));
+    }
+
+    public function products(Store $store, Request $request)
+    {
+        //
+        $products = $store->products();
+
+        if($request->q) {
+            $product = $products->where('name', 'like', '%'.$request->q.'%');
+        }
+
+        return view('store.products')->with([
+            'store' => $store,
+            'categories' => $store->productCategories()->where('is_active', true)->get(),
+            'products' => $products->get()
+        ]);
+    }
+
+    public function productCategoryListing(Store $store, ProductCategory $productCategory, Request $request)
+    {
+        $products = $store->products()->where('product_category_id', $productCategory->id);
+
+        if($request->q) {
+            $product = $products->where('name', 'like', '%'.$request->q.'%');
+        }
+
+        return view('store.products')->with([
+            'store' => $store,
+            'categories' => $store->productCategories()->where('is_active', true)->get(),
+            'products' => $products->get()
+        ]);
     }
 }

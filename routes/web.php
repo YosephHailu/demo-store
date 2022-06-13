@@ -29,8 +29,12 @@ Route::get('/store/{store}/login', [App\Http\Controllers\StoreController::class,
 Route::get('/store/{user}/logout', [App\Http\Controllers\StoreController::class, 'logout'])->name('store.logout');
 Route::resource('/stores', App\Http\Controllers\StoreController::class)->names('store');
 Route::resource('/product_categories', App\Http\Controllers\ProductCategoryController::class)->names('product_category');
+Route::get('product_categories/{productCategory}/toggle', [App\Http\Controllers\ProductCategoryController::class, 'toggle'])->name('product_category.toggle');
 Route::resource('/products', App\Http\Controllers\ProductController::class)->names('product');
 
 Route::get('my-cart', [App\Http\Controllers\CartController::class, 'myCart'])->name('cart.my-cart');
 Route::post('order', [App\Http\Controllers\OrderController::class, 'store'])->name('order.store');
+Route::get('/{store}/products', [App\Http\Controllers\StoreController::class, 'products'])->name('store.products');
+Route::get('/{store}/product/{product}', [App\Http\Controllers\ProductController::class, 'detail'])->name('store.product.listing');
+Route::get('/{store}/{productCategory}', [App\Http\Controllers\StoreController::class, 'productCategoryListing'])->name('store.category.listing');
 Route::get('/{store}', [App\Http\Controllers\StoreController::class, 'detail'])->name('store.detail');

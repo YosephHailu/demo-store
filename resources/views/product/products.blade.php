@@ -32,7 +32,7 @@
                 class="card-img-top" alt="Chicago Skyscrapers" />
 
             <div class="card-body pb-0" style="position: relative; padding-left: 14px">
-                <a href="{{ route('product.create') }}" title="Register product" class="btn btn-floating btn-primary btn-lg"
+                <a href="{{ route('product.show', $product->id) }}" title="Register product" class="btn btn-floating btn-primary btn-lg"
                     style="background-color: rgb(244, 67, 54); right: 10px; top: -20px; position: absolute;">
                     <i class="fas fa-trash"></i>
                 </a>

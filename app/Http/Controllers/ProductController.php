@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Store;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -35,9 +37,9 @@ class ProductController extends Controller
     public function create()
     {
         //
-        $productCategories = ProductCategory::all();
+        $productCategories = ProductCategory::where('store_id', auth()->user()->store->id);
         return view('product.create')->with([
-            'productCategories' => $productCategories
+            'productCategories' => $productCategories->get()
         ]);
     }
 
@@ -47,7 +49,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         //
         $product = Product::create([
@@ -55,7 +57,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'qty' => $request->qty,
             'description' => $request->description,
-            'product_category_id' => ProductCategory::first()->id,
+            'product_category_id' => $request->product_category_id,
             'store_id' => auth()->user()->store->id,
         ]);
 
@@ -77,6 +79,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
+        return view('product.show')->with(['product' => $product]);
     }
 
     /**
@@ -88,8 +91,10 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
+        $productCategories = ProductCategory::where('store_id', auth()->user()->store->id);
         return view('product.create')->with([
-            'product' => $product
+            'product' => $product,
+            'productCategories' => $productCategories->get()
         ]);
     }
 
@@ -108,13 +113,17 @@ class ProductController extends Controller
             'price' => $request->price,
             'qty' => $request->qty,
             'description' => $request->description,
-            'product_category_id' => ProductCategory::first()->id,
+            'product_category_id' => $request->product_category_id,
             ]);
 
         if($request->file_upload)
             $product->addMediaFromRequest('file_upload')->toMediaCollection('store');
 
-        return redirect()->route('product.index')->with('success', 'Product updated successfully');
+
+        if(auth()->user()->isAdmin())
+            return redirect()->route('product.index')->with('success', 'Product created successfully');
+        else
+            return redirect()->route('store.mystore')->with('success', 'Product created successfully');
     }
 
     /**
@@ -126,5 +135,19 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+        $product->carts()->delete();
+        $product->delete();
+
+        if(auth()->user()->isAdmin())
+            return redirect()->route('product.index')->with('success', 'Product created successfully');
+        else
+            return redirect()->route('store.mystore')->with('success', 'Product created successfully');
     }
+
+    public function detail(Store $store, Product $product)
+    {
+        //
+        return view('product.detail')->with(['product' => $product, 'store' => $store]);
+    }
+
 }

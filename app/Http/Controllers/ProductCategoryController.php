@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductCategoryRequest;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,7 @@ class ProductCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductCategoryRequest $request)
     {
         //
         $product_category = ProductCategory::create([
@@ -116,5 +117,12 @@ class ProductCategoryController extends Controller
     public function destroy(ProductCategory $productCategory)
     {
         //
+    }
+    
+    public function toggle(Request $request, ProductCategory $productCategory)
+    {
+        $productCategory->is_active = !$productCategory->is_active;
+        $productCategory->save();
+        return redirect(route('product_category.index'))->with('success', 'Product Category updated successfully.');
     }
 }

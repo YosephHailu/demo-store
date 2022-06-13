@@ -36,7 +36,7 @@
                     <div class="row g-0">
                         <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
                             <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                <h4 class="mb-4">We are more than just a company</h4>
+                                <h4 class="mb-4">Start by creating your store</h4>
                                 <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                                     eiusmod
                                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -48,7 +48,7 @@
                             <div class="card-body p-md-5 mx-md-4">
 
                                 <div class="text-center">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                                    <img src="https://gebeya.com/wp-content/uploads/2022/01/Submit-your-application-%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F-2assets.png"
                                         style="width: 185px;" alt="logo">
                                     <h4 class="mt-1 mb-5 pb-1">Add Store Information</h4>
                                 </div>
@@ -109,6 +109,11 @@
                                     <div class="form-outline mb-4">
                                         <input id="file" type="file"
                                             class="form-control @error('file') is-invalid @enderror" name="file_upload">
+                                        @error('file_upload')
+                                        <span class="invalid-feedback pb-3" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
 
 

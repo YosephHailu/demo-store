@@ -11,17 +11,7 @@
 @section('content')
 <div class="col-9 mx-auto bg-light row py-3">
     <div class="col-3">
-        <div class="list-group bg-white shadow list-group-light">
-            <a href="#"
-                class="list-group-item text-center list-group-item-action px-3 border-0 rounded-3 mb-2 text-uppercase bg-light">
-                <b>Product Categories</b>
-            </a>
-
-            @foreach ($categories as $category)
-            <a href="#" class="list-group-item list-group-item-action px-3 border-b rounded-3 ">
-                <i class="fa fa-chevron-right mb-2" style="font-size: 8px"></i> {{ $category->name }}</a>
-            @endforeach
-        </div>
+        @include('components.category_list')
     </div>
 
     <div class="col-8">
@@ -54,35 +44,24 @@
 
                 <div class="card bg-danger">
                     <div class="card-body text-white">
-                        <h5>Welcome to my shop</h5>
+                        <h5>Welcome to <b>gebeya</b>'s shop</h5>
                         <p>Get 50% off or get a coupon</p>
                         <a href="" class="btn btn-light btn-block bg-warning py-3 bg-light">Get coupon
                             <i class="fa fa-arrow-right mt-1" style="float:right"></i>
                         </a>
                         <div class="card px-3 mt-4">
                             <div class="row">
+                                @foreach ($products->limit(4)->get() as $product)
                                 <div class="col-6 py-1">
-                                    <img src="https://ae04.alicdn.com/kf/H1ad988bdda8c46b2a2d4be1d2ec7096ag.jpg_350x350.jpg_480x480Q90.webp"
-                                        style="width: 100%; max-height: 150px; object-fit:cover" class="pb-0" alt=""
-                                        srcset="">
-                                    <span class="text-black"> 150 Birr <span class="text-danger">10% off</span></span>
+                                    <a href="{{ route('store.product.listing', [$product->store_id, $product->id]) }}">
+                                        <img src="{{ $product->first_photo_url }}"
+                                            style="width: 100%; max-height: 150px; object-fit:cover" class="pb-0" alt=""
+                                            srcset="">
+                                        <span class="text-black"> {{ $product->price }} Birr <span
+                                                class="text-danger">10% off</span></span>
+                                    </a>
                                 </div>
-                                <div class="col-6 py-1">
-                                    <img src="https://ae04.alicdn.com/kf/H1ad988bdda8c46b2a2d4be1d2ec7096ag.jpg_350x350.jpg_480x480Q90.webp"
-                                        style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
-                                    <span class="text-black"> 150 Birr <span class="text-danger">10% off</span></span>
-                                </div>
-                                <div class="col-6 py-1">
-                                    <img src="https://ae04.alicdn.com/kf/H1ad988bdda8c46b2a2d4be1d2ec7096ag.jpg_350x350.jpg_480x480Q90.webp"
-                                        style="width: 100%; max-height: 150px; object-fit:cover" class="pb-0" alt=""
-                                        srcset="">
-                                    <span class="text-black"> 150 Birr <span class="text-danger">10% off</span></span>
-                                </div>
-                                <div class="col-6 py-1">
-                                    <img src="https://ae04.alicdn.com/kf/H1ad988bdda8c46b2a2d4be1d2ec7096ag.jpg_350x350.jpg_480x480Q90.webp"
-                                        style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
-                                    <span class="text-black"> 150 Birr <span class="text-danger">10% off</span></span>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -98,36 +77,16 @@
                     <div class="card-body">
                         <h5 class="card-title uppercase"><b>Featured products</b></h5>
                         <div class="row">
+                            @foreach ($products->limit(6)->get() as $product)
                             <div class="col-4">
-                                <img src="https://ae04.alicdn.com/kf/H1ad988bdda8c46b2a2d4be1d2ec7096ag.jpg_350x350.jpg_480x480Q90.webp"
-                                    style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
-                                <span class="text-black"> 150 Birr <span class="text-danger">10% off</span></span>
+                                <a href="{{ route('store.product.listing', [$product->store_id, $product->id]) }}">
+                                    <img src="{{ $product->first_photo_url }}"
+                                        style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
+                                    <span class="text-black"> {{ $product->price }} Birr <span class="text-danger">10%
+                                            off</span></span>
+                                </a>
                             </div>
-                            <div class="col-4">
-                                <img src="https://ae04.alicdn.com/kf/H1ad988bdda8c46b2a2d4be1d2ec7096ag.jpg_350x350.jpg_480x480Q90.webp"
-                                    style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
-                                <span class="text-black"> 150 Birr <span class="text-danger">10% off</span></span>
-                            </div>
-                            <div class="col-4">
-                                <img src="https://ae04.alicdn.com/kf/H1ad988bdda8c46b2a2d4be1d2ec7096ag.jpg_350x350.jpg_480x480Q90.webp"
-                                    style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
-                                <span class="text-black"> 150 Birr <span class="text-danger">10% off</span></span>
-                            </div>
-                            <div class="col-4">
-                                <img src="https://ae04.alicdn.com/kf/H1ad988bdda8c46b2a2d4be1d2ec7096ag.jpg_350x350.jpg_480x480Q90.webp"
-                                    style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
-                                <span class="text-black"> 150 Birr <span class="text-danger">10% off</span></span>
-                            </div>
-                            <div class="col-4">
-                                <img src="https://ae04.alicdn.com/kf/H1ad988bdda8c46b2a2d4be1d2ec7096ag.jpg_350x350.jpg_480x480Q90.webp"
-                                    style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
-                                <span class="text-black"> 150 Birr <span class="text-danger">10% off</span></span>
-                            </div>
-                            <div class="col-4">
-                                <img src="https://ae04.alicdn.com/kf/H1ad988bdda8c46b2a2d4be1d2ec7096ag.jpg_350x350.jpg_480x480Q90.webp"
-                                    style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
-                                <span class="text-black"> 150 Birr <span class="text-danger">10% off</span></span>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -150,7 +109,7 @@
                                 style="width: 45px; height: 45px; object-fit: cover" class="rounded-circle" />
                             <div class="ms-3">
                                 <p class="fw-bold mb-1">{{ $store->name }}</p>
-                                <p class="text-muted mb-0">{{ Str::limit($store->description, 80) }}</p>
+                                <p class="text-muted mb-0">{{ Str::limit($store->description, 60) }}</p>
                             </div>
                         </div>
                     </div>
