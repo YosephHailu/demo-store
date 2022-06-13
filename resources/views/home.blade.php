@@ -68,8 +68,8 @@
           <div class="card-body">
             <div class="d-flex justify-content-between px-md-1">
               <div>
-                <h3 class="text-info">278</h3>
-                <p class="mb-0">Active carts</p>
+                <h3 class="text-info">{{ $store->orders()->count() }}</h3>
+                <p class="mb-0">Total orders</p>
               </div>
               <div class="align-self-center">
                 <i class="fas fa-book-open text-info fa-3x"></i>
@@ -88,27 +88,7 @@
           <div class="card-body">
             <div class="d-flex justify-content-between px-md-1">
               <div>
-                <h3 class="text-warning">156</h3>
-                <p class="mb-0">New Comments</p>
-              </div>
-              <div class="align-self-center">
-                <i class="far fa-comments text-warning fa-3x"></i>
-              </div>
-            </div>
-            <div class="px-md-1">
-              <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6 col-12 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex justify-content-between px-md-1">
-              <div>
-                <h3 class="text-success">64.89 %</h3>
+                <h3 class="text-success">{{ $store->orders()->where('status', 'completed')->count() }}</h3>
                 <p class="mb-0">Bounce Rate</p>
               </div>
               <div class="align-self-center">
@@ -128,8 +108,8 @@
           <div class="card-body">
             <div class="d-flex justify-content-between px-md-1">
               <div>
-                <h3 class="text-danger">423</h3>
-                <p class="mb-0">Total Visits</p>
+                <h3 class="text-danger">{{ $store->orders()->where('status', '!=', 'completed')->count() }}</h3>
+                <p class="mb-0">Pending orders</p>
               </div>
               <div class="align-self-center">
                 <i class="fas fa-map-signs text-danger fa-3x"></i>

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('card_number');
             $table->string('card_expiry');
             $table->string('card_cvv');
+            $table->string('status')->default('paid');
             $table->timestamps();
         });
     }

@@ -36,6 +36,7 @@ Route::resource('/orders', App\Http\Controllers\OrderController::class)->names('
 Route::get('my-cart', [App\Http\Controllers\CartController::class, 'myCart'])->name('cart.my-cart');
 Route::post('order', [App\Http\Controllers\OrderController::class, 'store'])->name('order.store');
 Route::get('order', [App\Http\Controllers\OrderController::class, 'show'])->name('order.show');
+Route::get('order/{order}/complete', [App\Http\Controllers\OrderController::class, 'complete'])->name('order.complete');
 Route::get('my-order', [App\Http\Controllers\OrderController::class, 'index'])->name('order.my-order');
 Route::get('/{store}/products', [App\Http\Controllers\StoreController::class, 'products'])->name('store.products');
 Route::get('/{store}/product/{product}', [App\Http\Controllers\ProductController::class, 'detail'])->name('store.product.listing');

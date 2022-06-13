@@ -123,4 +123,14 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function complete(Order $order)
+    {
+        //
+        $order->status = "completed";
+        $order->save();
+
+        return back()->with('success', "Order status updated !");
+    }
+
 }
