@@ -53,6 +53,16 @@ class Store extends Model implements HasMedia
         return $this->hasMany(ProductCategory::class);
     }
 
+    /**
+     * Get all of the orders for the Store
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this

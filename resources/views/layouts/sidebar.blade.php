@@ -43,6 +43,13 @@
         My Store
       </a>
     </li>
+    <li>
+      <a href="{{ route('order.my-order') }}"
+        class="nav-link link-dark {{ (request()->is('order*')) ? 'active' : '' }}">
+        <i class="fa fa-ellipses-h me-2"></i>
+        Orders
+      </a>
+    </li>
     @endif
     <li>
       <a href="{{ route('product_category.index') }}"

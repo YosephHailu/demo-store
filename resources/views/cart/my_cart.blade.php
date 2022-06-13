@@ -83,56 +83,43 @@
                                     <form class="mt-4" action="{{ route('order.store') }}" method="POST">
                                         @csrf
                                         <div class="form-outline form-white mb-4">
-                                            <input type="text" id="typeName" class="form-control form-control-lg"
-                                                siez="17" placeholder="Cardholder's Name">
-                                            <label class="form-label" for="typeName"
+                                            <input type="text" id="name" required class="form-control form-control-lg"
+                                                siez="17" placeholder="Cardholder's Name" name="name">
+                                            <label class="form-label" for="name"
                                                 style="margin-left: 0px;">Cardholder's Name</label>
-                                            <div class="form-notch">
-                                                <div class="form-notch-leading" style="width: 9px;"></div>
-                                                <div class="form-notch-middle" style="width: 117.6px;"></div>
-                                                <div class="form-notch-trailing"></div>
-                                            </div>
                                         </div>
 
                                         <div class="form-outline form-white mb-4">
-                                            <input type="text" id="typeText" class="form-control form-control-lg"
+                                            <input type="email" id="email" name="email" required class="form-control form-control-lg"
                                                 siez="17" placeholder="1234 5678 9012 3457" minlength="19"
                                                 maxlength="19">
-                                            <label class="form-label" for="typeText" style="margin-left: 0px;">Card
+                                            <label class="form-label" for="email" style="margin-left: 0px;">Email</label>
+                                        </div>
+
+                                        <div class="form-outline form-white mb-4">
+                                            <input type="text" id="card_number" name="card_number" required class="form-control form-control-lg"
+                                                siez="17" placeholder="1234 5678 9012 3457" minlength="19"
+                                                maxlength="19">
+                                            <label class="form-label" for="card_number" style="margin-left: 0px;">Card
                                                 Number</label>
-                                            <div class="form-notch">
-                                                <div class="form-notch-leading" style="width: 9px;"></div>
-                                                <div class="form-notch-middle" style="width: 84.8px;"></div>
-                                                <div class="form-notch-trailing"></div>
-                                            </div>
                                         </div>
 
                                         <div class="row mb-4">
                                             <div class="col-md-6">
                                                 <div class="form-outline form-white">
-                                                    <input type="text" id="typeExp" class="form-control form-control-lg"
+                                                    <input type="text" id="card_expiry" name="card_expiry" required class="form-control form-control-lg"
                                                         placeholder="MM/YYYY" size="7" minlength="7" maxlength="7">
-                                                    <label class="form-label" for="typeExp"
+                                                    <label class="form-label" for="card_expiry"
                                                         style="margin-left: 0px;">Expiration</label>
-                                                    <div class="form-notch">
-                                                        <div class="form-notch-leading" style="width: 9px;"></div>
-                                                        <div class="form-notch-middle" style="width: 64.8px;"></div>
-                                                        <div class="form-notch-trailing"></div>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-outline form-white">
-                                                    <input type="password" id="typeText"
-                                                        class="form-control form-control-lg" placeholder="●●●" size="1"
+                                                    <input type="password" id="card_cvv" name="card_cvv"
+                                                        required class="form-control form-control-lg" placeholder="●●●" size="1"
                                                         minlength="3" maxlength="3">
-                                                    <label class="form-label" for="typeText"
+                                                    <label class="form-label" for="card_cvv"
                                                         style="margin-left: 0px;">Cvv</label>
-                                                    <div class="form-notch">
-                                                        <div class="form-notch-leading" style="width: 9px;"></div>
-                                                        <div class="form-notch-middle" style="width: 28.8px;"></div>
-                                                        <div class="form-notch-trailing"></div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

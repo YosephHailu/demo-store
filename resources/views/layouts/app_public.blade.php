@@ -46,9 +46,9 @@
                 <ul class="navbar-nav ">
                     <li class="nav-item me-3 me-lg-1">
                         <!-- Search form -->
-                        <form class="input-group my-auto d-none d-sm-flex">
+                        <form action="/order" class="input-group my-auto d-none d-sm-flex">
                             <input autocomplete="off" type="search" class="form-control rounded py-4"
-                                placeholder="Search..." style="min-width: 325px;" />
+                                placeholder="Search..." name="order_number" style="min-width: 325px;" />
                             <span class="input-group-text border-0 d-none d-lg-flex position-absolute text-lighter"
                                 style="right: 0; top: 6px"><i class="fas fa-search"></i></span>
                         </form>
@@ -67,7 +67,11 @@
                         </a>
                     </li>
                     <li style="margin-top:2px;min-height:1px;min-width:1px;">
+                        @guest
                         <a class="btn btn-primary ms-2 me-1" href="{{ route('login') }}">Login</a>
+                        @else
+                        <a class="btn btn-default ms-2 me-1" href="{{ route('home') }}">Dashboard</a>
+                        @endguest
                     </li>
                 </ul>
                 <!-- Right elements -->
