@@ -1,9 +1,6 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light shadow-lg" style="width: 280px; min-height: 100vh">
-  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-    <svg class="bi me-2" width="40" height="32">
-      <use xlink:href="#bootstrap"></use>
-    </svg>
-    <span class="fs-4">Sidebar</span>
+  <a href="/" class="mx-auto">
+    <img src="https://gebeya.com/wp-content/uploads/2022/01/Submit-your-application-%D0%BA%D0%BE%D0%BF%D0%B8%D1%8F-2assets.png" style="width: 150px" class="mx-auto" alt="">
   </a>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
@@ -56,20 +53,4 @@
     </li>
   </ul>
   <hr>
-  <div class="dropdown">
-    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
-      data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-      <strong>mdo</strong>
-    </a>
-    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
-      <li>
-        <hr class="dropdown-divider">
-      </li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
-    </ul>
-  </div>
 </div>

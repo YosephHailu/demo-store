@@ -64,8 +64,7 @@
 
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                             required autocomplete="email"
-                                            autofocus>
+                                             required autocomplete="email"  required>
                                         <label class="form-label" for="form2Example11">Enter email</label>
 
                                         @error('email')
@@ -83,8 +82,7 @@
 
                                         <input id="name" type="name"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
-                                            required autocomplete="name"
-                                            autofocus>
+                                            required autocomplete="name" required>
                                         <label class="form-label" for="form2Example11">Enter name</label>
 
                                         @error('name')
