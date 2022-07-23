@@ -42,10 +42,12 @@
                             <div class="row">
                               @foreach ($products->take(4) as $product)
                                 <div class="col-6 py-1">
-                                    <img src="{{ $product->first_photo_url }}"
-                                        style="width: 100%; max-height: 150px; object-fit:cover" class="pb-0" alt=""
-                                        srcset="">
-                                    <span class="text-black"> {{ $product->price }} Birr <span class="text-danger text-underlined">10% off</span></span>
+                                    <a href="{{ route('store.product.listing', [$store->id, $product->id]) }}">
+                                        <img src="{{ $product->first_photo_url }}"
+                                            style="width: 100%; max-height: 150px; object-fit:cover" class="pb-0" alt=""
+                                            srcset="">
+                                        <span class="text-black"> {{ $product->price }} Birr <span class="text-danger text-underlined">10% off</span></span>
+                                    </a>
                                 </div>
                                 @endforeach
                             </div>
@@ -64,9 +66,11 @@
                         <div class="row">
                           @foreach ($products->take(6) as $product)
                             <div class="col-4">
-                                <img src="{{ $product->first_photo_url }}"
-                                    style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
-                                <span class="text-black"> {{ $product->price }} Birr <span class="text-danger">10% off</span></span>
+                                <a href="{{ route('store.product.listing', [$store->id, $product->id]) }}">
+                                    <img src="{{ $product->first_photo_url }}"
+                                        style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
+                                    <span class="text-black"> {{ $product->price }} Birr <span class="text-danger">10% off</span></span>
+                                </a>
                             </div>
                           @endforeach
                         </div>

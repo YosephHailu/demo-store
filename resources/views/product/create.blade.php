@@ -54,7 +54,8 @@
                             </div>
 
                             @isset($product)
-                            <form method="POST" action="{{ route('product.update', $product->id) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('product.update', $product->id) }}"
+                                enctype="multipart/form-data">
                                 @method('put')
                                 @else
                                 <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
@@ -64,11 +65,15 @@
                                     <p>Please fill your product information</p>
 
                                     <div class="mb-4">
-                                        <label class="form-label" >Product category</label>
+                                        <label class="form-label">Product category</label>
                                         <select name="product_category_id" class="form-control">
                                             <option value="">Select category</option>
                                             @foreach ($productCategories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}" 
+                                            @if(($product->product_category_id ?? old('product_category_id')) == $category->id)
+                                                selected
+                                                @endif>
+                                                {{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                         @error('product_category_id')

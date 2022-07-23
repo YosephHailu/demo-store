@@ -36,15 +36,9 @@
                     <div class="p-4">
 
                         <div class="mb-3">
-                            <a href="">
-                                <span class="badge purple mr-1 text-dark"><b>CATEGORY </b> <span class="text-muted">{{ $product->productCategory->name }}</span> </span>
-                            </a>
-                            {{-- <a href="">
-                                <span class="badge blue mr-1">New</span>
-                            </a> --}}
-                            <a href="">
-                                <span class="badge red mr-1 text-dark">{{ $product->store->name }} shop</span>
-                            </a>
+                            <span class="p-0 badge red mr-1 text-dark text-uppercase">{{ $product->store->name }}</span>
+                            <span class="badge purple mr-1 text-dark"><b>CATEGORY </b> <span class="text-muted">{{ $product->productCategory->name }}</span> </span>
+                            
                         </div>
 
                         <p class="lead">
@@ -59,12 +53,11 @@
                             <!-- Default input -->
                             <input type="number" value="1" aria-label="Search" class="form-control"
                                 style="width: 100px">
-                            <button class="btn btn-primary btn-md my-0 p mr-2" type="submit">Add to cart
+                            <button class="btn btn-primary btn-md my-0 p mr-2" type="button" onclick="addToChart({{$product}})">Add to cart
                                 <i class="fas fa-shopping-cart ml-1"></i>
                             </button>
 
                         </form>
-
                     </div>
                     <!--Content-->
 

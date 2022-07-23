@@ -119,10 +119,12 @@ class StoreController extends Controller
             'phone' => $request->phone,
         ]);
 
-        if($request->file_upload)
+        if($request->file_upload){
+            $store->media()->delete();
             $store->addMediaFromRequest('file_upload')->toMediaCollection('store');
+        }
 
-        return redirect(route('store.index'))->with([
+        return redirect(route('store.mystore'))->with([
             'success' => 'Store updated successfully'
         ]);
     }
