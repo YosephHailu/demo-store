@@ -9,27 +9,27 @@
 @endpush
 
 @section('content')
-<div class="col-9 mx-auto bg-light row py-3">
-    <div class="col-3">
+<div class="col-lg-12 col-xl-10 mx-auto bg-light row py-3">
+    <div class="col-lg-3 col-12 mb-2">
         @include('components.category_list')
     </div>
 
-    <div class="col-8">
+    <div class="col-lg-8 col-12">
         <div class="card">
             <div class="col-12 row">
                 <a href="" class="col-4 text-center hover-bg">
-                    <i class="fa fa-shopping-cart text-danger pe-1 p-4"></i> <b>Easy payment</b>
+                    <i class="fa fa-shopping-cart text-danger pe-1 py-4"></i> <b>Easy payment</b>
                 </a>
                 <a href="" class="col-4 text-center hover-bg">
-                    <i class="fa fa-shopping-cart text-danger pe-1 p-4"></i> <b>Multiple vendors</b>
+                    <i class="fa fa-shopping-cart text-danger pe-1 py-4"></i> <b>Multiple vendors</b>
                 </a>
                 <a href="" class="col-4 text-center hover-bg">
-                    <i class="fa fa-shopping-cart text-danger pe-1 p-4"></i> <b>Easy payment</b>
+                    <i class="fa fa-shopping-cart text-danger pe-1 py-4"></i> <b>Easy payment</b>
                 </a>
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-5">
+            <div class="col-lg-5">
                 <div class="card card-body shadow-lg mb-3">
                     <div class="row">
                         <a href="{{ route('register') }}" class="mt-3 btn btn-danger py-3 col-5 mx-auto">Join us
@@ -68,7 +68,7 @@
                 </div>
 
             </div>
-            <div class="col-7">
+            <div class="col-lg-7">
                 <div class="card card-body">
                     <img src="https://ae01.alicdn.com/kf/Sbacfd60eeaef4df188f81d3e054bb6d5U.jpg_Q90.jpg_.webp" alt=""
                         srcset="">
