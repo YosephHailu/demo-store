@@ -46,7 +46,7 @@
                     <div class="card-body text-white">
                         <h5>Welcome to <b>gebeya</b>'s shop</h5>
                         <p>Get 50% off or get a coupon</p>
-                        <a href="" class="btn btn-light btn-block bg-warning py-3 bg-light">Get coupon
+                        <a href="{{route('coming-soon')}}" class="btn btn-light btn-block bg-warning py-3 bg-light">Get coupon
                             <i class="fa fa-arrow-right mt-1" style="float:right"></i>
                         </a>
                         <div class="card px-3 mt-4">
