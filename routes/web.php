@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'landing'])->name('landing');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/coming-soon', [App\Http\Controllers\HomeController::class, 'comingSoon'])->name('coming-soon');
 Route::resource('/users', App\Http\Controllers\UserController::class)->names('user');
 Route::get('/admins', [App\Http\Controllers\UserController::class, 'admins'])->name('user.admins');
 Route::get('/store/mystore', [App\Http\Controllers\StoreController::class, 'myStore'])->name('store.mystore');

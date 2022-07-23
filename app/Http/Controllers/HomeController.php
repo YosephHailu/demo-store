@@ -40,4 +40,10 @@ class HomeController extends Controller
 
         return view('landing')->with(['categories' => $categories, 'stores' => $stores, 'products' => $products]);
     }
+
+    public function comingSoon()
+    {
+        return view('coming-soon');
+    }
+
 }
