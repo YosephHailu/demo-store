@@ -18,10 +18,10 @@ class StoreFactory extends Factory
     {
         return [
             //
-            'name' => $this->faker->name(),
+            'name' => "Demo store",
             'description' => $this->faker->text(),
             'phone' => $this->faker->phoneNumber(),
-            'user_id' => 1,
+            'user_id' => 2,
         ];
     }
 }

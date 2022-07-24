@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Gebeya store') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -46,7 +46,7 @@
                 <ul class="navbar-nav ">
                     <li class="nav-item me-3 me-lg-1">
                         <!-- Search form -->
-                        <form action="/order" class="input-group my-auto d-none d-sm-flex">
+                        <form  class="input-group my-auto d-none d-sm-flex">
                             <input autocomplete="off" type="search" class="form-control rounded py-4"
                                 placeholder="Search..." name="order_number" style="min-width: 325px;" />
                             <span class="input-group-text border-0 d-none d-lg-flex position-absolute text-lighter"
