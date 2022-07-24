@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('phone')->nullable();
 
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description')->nullable();
-            $table->foreignId('store_id')->constrained();
+            $table->foreignId('store_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('qty');
             $table->string('description')->nullable();
 
-            $table->foreignId('product_category_id')->constrained();
-            $table->foreignId('store_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_category_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('store_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
