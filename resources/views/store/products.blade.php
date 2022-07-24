@@ -37,13 +37,6 @@
 
                 <div class="right" style="margin-left: auto !important">
                     <form class=" input-group w-auto my-auto d-none d-sm-flex">
-                        {{-- <select name="product_category_id" class="form-control">
-                            <option value="" selected>Select category</option>
-                            @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select> --}}
-
                         <input autocomplete="off" type="search" name="q" class="form-control rounded"
                             placeholder="Search" style="min-width: 125px;" />
                         <span class="input-group-text border-0 d-none d-lg-flex position-absolute text-lighter"

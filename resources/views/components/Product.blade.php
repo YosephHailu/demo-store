@@ -1,4 +1,4 @@
-<div style="max-width: 300px;" x-data>
+<div class="mx-auto" style="max-width: 300px;" x-data>
     <div class="card shadow-lg p-0 mb-4">
         <img src="{{ $product->first_photo_url }}" style="max-height: 200px; object-fit: cover" class="card-img-top"
             alt="Chicago Skyscrapers" />
