@@ -26,7 +26,7 @@
                 <i class="fas fa-chart-line text-success fa-3x"></i>
               </div>
               <div class="text-end">
-                <h3>{{ $store->productCategories()->count() }}</h3>
+                <h3>{{ $store->orders()->count() }}</h3>
                 <p class="mb-0">Orders / Transactions</p>
               </div>
             </div>
@@ -41,7 +41,7 @@
                 <i class="fas fa-map-marker-alt text-danger fa-3x"></i>
               </div>
               <div class="text-end">
-                <h3>423</h3>
+                <h3>--,--</h3>
                 <p class="mb-0">Total Visits</p>
               </div>
             </div>
@@ -89,7 +89,7 @@
             <div class="d-flex justify-content-between px-md-1">
               <div>
                 <h3 class="text-success">{{ $store->orders()->where('status', 'completed')->count() }}</h3>
-                <p class="mb-0">Bounce Rate</p>
+                <p class="mb-0">Completed orders</p>
               </div>
               <div class="align-self-center">
                 <i class="fas fa-mug-hot text-success fa-3x"></i>

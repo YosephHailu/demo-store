@@ -21,8 +21,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             'price' => $this->faker->randomFloat(2, 0, 100),
-            'image' => $this->faker->imageUrl(),
-            'store_id' => $this->faker->numberBetween(1, 10),
+            'store_id' => 1,
             'product_category_id' => $this->faker->numberBetween(2, 10),
             'qty' => $this->faker->numberBetween(177, 1000),
         ];

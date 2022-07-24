@@ -19,7 +19,7 @@ class ProductCategoryFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
-            'store_id' => $this->faker->numberBetween(1, 10),
+            'store_id' => 1,
         ];
     }
 }
