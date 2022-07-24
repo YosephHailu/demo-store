@@ -64,7 +64,9 @@ class Product extends Model implements HasMedia
     }
 
     public function getFirstPhotoUrlAttribute() {
-        return Str::replaceFirst('http://localhost/', url('/') . '/', $this->getFirstMediaUrl('store'));
+        if($this->getFirstMediaUrl('store'))
+            return Str::replaceFirst('http://localhost/', url('/') . '/', $this->getFirstMediaUrl('store'));
+        return asset('product.png');
     }
 
 }
