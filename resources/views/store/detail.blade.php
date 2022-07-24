@@ -13,14 +13,14 @@
 @endpush
 
 @section('content')
-<div class="col-9 mx-auto bg-light row py-3">
-    <div class="col-3">
+<div class="col-lg-12 col-xl-10 mx-auto bg-light row py-3">
+    <div class="col-lg-3 col-12 mb-2">
         @include('components.category_list')
     </div>
 
-    <div class="col-8">
+    <div class="col-lg-8 col-12">
         <div class="card">
-            <div class="col-12 row">
+            <div class="col-12 d-flex">
                 <a href="" class="col-4 text-center hover-bg active">
                     <i class="fa fa-shopping-cart text-danger pe-1 p-4"></i> <b>HOME</b>
                 </a>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-5">
+            <div class="col-md-5">
                 <div class="card bg-danger">
                     <div class="card-body text-white">
                         <h5>Welcome to <b>{{ $store->name }}</b> shop</h5>
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-7">
+            <div class="col-md-7">
                 <div class="card card-body">
                     <img src="{{ $store->first_photo_url }}" alt=""
                         srcset="">
@@ -80,13 +80,13 @@
         </div>
     </div>
 </div>
-<div class="container bg-light p-5 mt-4">
+<div class="col-lg-12 col-xl-10 mx-auto bg-light row py-3">
     <div>
         <h3 class="text-center text-uppercase"><b>Top selling products</b></h3>
     </div>
     <div class="row">
       @foreach ($products->take(6) as $product)
-      <div class="col-3 my-2" x-data>
+        <div class="col-md-3 mx-auto col-xl-2 col-4 py-2" x-data>
           <img src="{{ $product->first_photo_url }}"
               style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
           <span class="text-black"> {{ $product->price }} Birr <span class="text-danger">{{ $product->qty }} items left</span></span>

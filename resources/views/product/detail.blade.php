@@ -24,8 +24,7 @@
 
                 <!--Grid column-->
                 <div class="col-md-6 mb-4">
-                    <img src="{{ $product->first_photo_url }}"
-                        class="img-fluid" alt="">
+                    <img src="{{ $product->first_photo_url }}" class="img-fluid" alt="">
                 </div>
                 <!--Grid column-->
 
@@ -37,8 +36,9 @@
 
                         <div class="mb-3">
                             <span class="p-0 badge red mr-1 text-dark text-uppercase">{{ $product->store->name }}</span>
-                            <span class="badge purple mr-1 text-dark"><b>CATEGORY </b> <span class="text-muted">{{ $product->productCategory->name }}</span> </span>
-                            
+                            <span class="badge purple mr-1 text-dark"><b>CATEGORY </b> <span class="text-muted">{{
+                                    $product->productCategory->name }}</span> </span>
+
                         </div>
 
                         <p class="lead">
@@ -49,11 +49,12 @@
 
                         <p>{{ $product->description }}</p>
 
-                        <form class="d-flex justify-content-left">
+                        <form class="d-flex justify-content-left" x-data>
                             <!-- Default input -->
                             <input type="number" value="1" aria-label="Search" class="form-control"
                                 style="width: 100px">
-                            <button class="btn btn-primary btn-md my-0 p mr-2" type="button" onclick="addToChart({{$product}})">Add to cart
+                            <button class="btn btn-primary btn-md my-0 p mr-2" type="button"
+                                @click="addToChart({{$product}})">Add to cart
                                 <i class="fas fa-shopping-cart ml-1"></i>
                             </button>
 
@@ -73,7 +74,7 @@
             <div class="row d-flex justify-content-center wow fadeIn">
 
                 <!--Grid column-->
-                <div class="col-md-6 text-center">
+                <div class=" text-center">
 
                     <h4 class="my-4 h4">Additional information</h4>
 
@@ -89,14 +90,13 @@
             <!--Grid row-->
 
             <!--Grid row-->
-            <div class="row wow fadeIn col-8 mx-auto">
+            <div class="row wow fadeIn  mx-auto">
 
                 @foreach ($store->products()->where('id', '!=', $product->id)->limit(3)->get() as $product)
                 <!--Grid column-->
-                <div class="col-lg-4 col-md-12 mb-4">
+                <div class="col-md-3 col-4 py-2" x-data>
                     <a href="{{ route('store.product.listing', [$store->id, $product->id]) }}">
-                        <img src="{{ $product->first_photo_url }}"
-                            class="img-fluid" alt="">
+                        <img src="{{ $product->first_photo_url }}" class="img-fluid" alt="">
                     </a>
                 </div>
                 <!--Grid column-->

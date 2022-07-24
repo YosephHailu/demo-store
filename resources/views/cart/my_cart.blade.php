@@ -22,7 +22,7 @@
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <div>
                                     <p class="mb-1">Shopping cart</p>
-                                    <p class="mb-0">You have 4 items in your cart</p>
+                                    <p class="mb-0">You have {{$carts->count()}} items in your cart</p>
                                 </div>
                                 <div>
                                     <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
@@ -42,7 +42,7 @@
                                             </div>
                                             <div class="ms-3">
                                                 <h5>{{ $cart->product->name }}</h5>
-                                                <p class="small mb-0">256GB, Navy Blue</p>
+                                                <p class="small mb-0">{{ $cart->product->productCategory->name }}</p>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center">

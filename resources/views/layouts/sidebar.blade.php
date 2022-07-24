@@ -44,6 +44,12 @@
       </a>
     </li>
     <li>
+      <a href="{{ route('store.detail', auth()->user()->store->id ?? "") }}" class="nav-link link-dark ">
+        <i class="fa fa-shop me-2"></i>
+        My Store Front
+      </a>
+    </li>
+    <li>
       <a href="{{ route('order.my-order') }}"
         class="nav-link link-dark {{ (request()->is('order*')) ? 'active' : '' }}">
         <i class="fa fa-ellipses-h me-2"></i>

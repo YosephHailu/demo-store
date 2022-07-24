@@ -4,15 +4,9 @@
 @endpush
 
 @section('content')
-<div class="fixed-action-btn" id="fixed1" style="height: 80px;">
-    <a href="{{ route('product.create') }}" title="Register product" class="btn btn-floating btn-primary btn-lg"
-        style="background-color: rgb(244, 67, 54);">
-        <i class="fas fa-plus"></i>
-    </a>
-</div>
 <div class="card">
     <div class="card-header d-flex pb-0">
-        <h3 class="card-title font-bold"><b>MY PRODUCTS</b></h3>
+        <h3 class="card-title font-bold"><b>PRODUCTS</b></h3>
 
         <div class="right" style="margin-left: auto !important">
             <form class=" input-group w-auto my-auto d-none d-sm-flex">
@@ -28,18 +22,13 @@
     @foreach ($products as $product)
     <div  style="max-width: 300px;">
         <div class="card shadow-lg p-0 mb-4">
-            <img src="{{ $product->first_photo_url }}" style="max-height: 200px"
+            <img src="{{ $product->first_photo_url }}" style="max-height: 200px; object-fit: cover"
                 class="card-img-top" alt="Chicago Skyscrapers" />
 
             <div class="card-body pb-0" style="position: relative; padding-left: 14px">
                 <a href="{{ route('product.show', $product->id) }}" title="Register product" class="btn btn-floating btn-primary btn-lg"
                     style="background-color: rgb(244, 67, 54); right: 10px; top: -20px; position: absolute;">
                     <i class="fas fa-trash"></i>
-                </a>
-
-                <a href="{{ route('product.edit', $product->id) }}" title="Register product" class="btn btn-floating btn-primary btn-lg"
-                    style="right: 70px; top: -20px; position: absolute;">
-                    <i class="fas fa-pen"></i>
                 </a>
 
                 <h5 class="card-title">{{ $product->name }}</h5>
