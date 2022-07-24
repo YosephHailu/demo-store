@@ -37,6 +37,7 @@ class ProductController extends Controller
     public function create()
     {
         //
+        $this->authorize('create', Product::class);
         $productCategories = ProductCategory::where('store_id', auth()->user()->store->id);
         return view('product.create')->with([
             'productCategories' => $productCategories->get()
@@ -91,6 +92,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
+        $this->authorize('update', $product);
         $productCategories = ProductCategory::where('store_id', auth()->user()->store->id);
         return view('product.create')->with([
             'product' => $product,
@@ -108,6 +110,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        $this->authorize('update', $product);
         $product->update([
             'name' => $request->name,
             'price' => $request->price,

@@ -26,6 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->isAdmin()){
+            return view('home-admin');
+        }
+
         if(!auth()->user()->store) {
             return redirect()->route('store.mystore');
         }

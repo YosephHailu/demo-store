@@ -21,6 +21,10 @@ class ProductCategoryController extends Controller
     public function index(Request $request)
     {
         //
+        $store = auth()->user()->store;
+        if(!$store) {
+            return redirect(route('store.create'));
+        }
         $product_categories = auth()->user()->store->productCategories();
         if($request->q) {
             $product_categories::where('name', 'like', '%'.$request->q.'%');

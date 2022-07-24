@@ -6,6 +6,7 @@ use App\Http\Requests\StoreOrderRequest;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use App\Models\Store;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -21,6 +22,10 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         //
+        $store = auth()->user()->store;
+        if(!$store) {
+            return redirect(route('store.create'));
+        }
         $orders = auth()->user()->store->orders();
         return view('order.myorders')->with('orders', $orders->get());
     }
@@ -67,6 +72,10 @@ class OrderController extends Controller
                     'quantity' => $cart->quantity,
                     'price' => $cart->product->price,
                 ]);
+
+                $product = Product::find($cart->product_id);
+                $product->qty -= $cart->quantity;
+                $product->save();
             }
             Cart::whereIn('id', $carts->pluck('id'))->delete();
             $orders->push($order);
