@@ -43,7 +43,7 @@
                     <i class="fas fa-pen"></i>
                 </a>
 
-                <a href="{{ route('store.login', $store->id) }}" title="Register store"
+                <a href="{{ route('store.login', $store->id) }}" title="Login to store dashboard"
                     class="btn btn-floating btn-secondary btn-lg" style="right: 130px; top: -20px; position: absolute;">
                     <i class="fas fa-lock"></i>
                 </a>
