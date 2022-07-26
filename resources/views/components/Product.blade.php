@@ -4,7 +4,7 @@
             alt="Chicago Skyscrapers" />
 
         <div class="card-body pb-0" style="position: relative; padding-left: 14px">
-            <button @click="addToChart({{$product}})" title="Register product"
+            <button @click="addToCart({{$product}})" title="Register product"
                 class="btn btn-floating btn-primary btn-lg"
                 style="background-color: rgb(156, 130, 12); right: 10px; top: -20px; position: absolute;">
                 <i class="fas fa-cart-plus"></i>

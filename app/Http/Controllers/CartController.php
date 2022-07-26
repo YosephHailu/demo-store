@@ -14,7 +14,7 @@ class CartController extends Controller
         $store = Cart::firstOrCreate([
             'ip' => $request->ip(),
             'product_id' => $request->id], [
-            'quantity' => 1,
+            'quantity' => $request->quantity,
         ]);
 
         return response()->json(['cart_count' => Cart::where('ip', $request->ip())->count()]);
@@ -29,6 +29,16 @@ class CartController extends Controller
     public function remove(Request $request, Cart $cart)
     {
         $cart->delete();
+
+        return response()->json(['cart_count' => Cart::where('ip', $request->ip())->count()]);
+    }
+
+
+    public function update(Request $request, Cart $cart)
+    {
+        $cart->update([
+            'quantity' => $request->quantity
+        ]);
 
         return response()->json(['cart_count' => Cart::where('ip', $request->ip())->count()]);
     }

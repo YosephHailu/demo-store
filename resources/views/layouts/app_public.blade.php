@@ -90,8 +90,8 @@
     <script>
         const rootApiUrl = "{{ url('/') }}/api";
 
-        function addToChart(product) {
-            console.log(product);
+        function addToCart(product, quantity) {
+            product.quantity = quantity;
 
             $.post(rootApiUrl + "/store", product, function(response) {
                     let cartCounter = $('.cart-counter');

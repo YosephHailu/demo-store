@@ -65,7 +65,9 @@
       <div class="d-flex justify-content-between pt-2">
         <p class="fw-bold mb-0">Order Details</p>
         <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> ${{
-          number_format($order->orderItems->sum('price'), 2) }} </p>
+          number_format($order->orderItems->sum(function($q) {
+                                                return $q->product->price * $q->quantity;
+                                                }), 2) }} </p>
       </div>
 
       <div class="d-flex justify-content-between pt-2">
@@ -90,8 +92,12 @@
       <div class="text-right col-8">
         <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0 text-right"
           style="float: right">Total
-          paid: <span class="h2 mb-0 ms-2">${{ number_format($order->orderItems->sum('price') + (
-            $order->orderItems->sum('price') * 0.15 ), 2) }}</span></h5>
+          paid: <span class="h2 mb-0 ms-2">${{ number_format($order->orderItems->sum(function($q) {
+                                                return $q->product->price * $q->quantity;
+                                                }) + (
+            $order->orderItems->sum(function($q) {
+                                                return $q->product->price * $q->quantity;
+                                                }) * 0.15 ), 2) }}</span></h5>
       </div>
     </div>
   </div>

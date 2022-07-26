@@ -51,10 +51,10 @@
 
                         <form class="d-flex justify-content-left" x-data>
                             <!-- Default input -->
-                            <input type="number" value="1" aria-label="Search" class="form-control"
+                            <input type="number" value="1" id="ProductQuantity" aria-label="Search" class="form-control"
                                 style="width: 100px">
                             <button class="btn btn-primary btn-md my-0 p mr-2" type="button"
-                                @click="addToChart({{$product}})">Add to cart
+                                @click="initAddToCart({{$product}})">Add to cart
                                 <i class="fas fa-shopping-cart ml-1"></i>
                             </button>
 
@@ -111,4 +111,11 @@
 
 </div>
 
+
+<script>
+    function initAddToCart(product) {
+        this.addToCart(product, $("#ProductQuantity").val());
+        window.location = "{{url()->current()}}"
+    }
+</script>
 @endsection

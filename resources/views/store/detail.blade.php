@@ -80,6 +80,7 @@
         </div>
     </div>
 </div>
+
 <div class="col-lg-12 col-xl-10 mx-auto bg-light row py-3">
     <div>
         <h3 class="text-center text-uppercase"><b>Top selling products</b></h3>
@@ -90,7 +91,7 @@
           <img src="{{ $product->first_photo_url }}"
               style="width: 100%; max-height: 150px; object-fit:cover" alt="" srcset="">
           <span class="text-black"> {{ $product->price }} Birr <span class="text-danger">{{ $product->qty }} items left</span></span>
-          <button @click="addToChart({{$product}})">Add to cart</button>
+          <button onClick="addToCart({{$product}}, 1)">Add to cart</button>
       </div>
     @endforeach
     </div>

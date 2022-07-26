@@ -46,13 +46,16 @@
                                             </div>
                                         </div>
                                         <div class="d-flex flex-row align-items-center">
-                                            <div style="width: 50px;">
-                                                <h5 class="fw-normal mb-0">{{ $cart->quantity }}</h5>
-                                            </div>
+
+                                            <input type="number" value="{{$cart->quantity}}"
+                                                data-cart_id="{{$cart->id}}" aria-label="Search"
+                                                class="product-quantity form-control" style="width: 100px">
+                                            <div style="width: 50px;"> </div>
                                             <div style="width: 80px;">
                                                 <h5 class="mb-0">${{ $cart->product->price }}</h5>
                                             </div>
-                                            <button onclick="removeFromChart({{ $cart->id }})" style="color: #cecece;"><i class="fas fa-trash-alt"></i></button>
+                                            <button onclick="removeFromChart({{ $cart->id }})"
+                                                style="color: #cecece;"><i class="fas fa-trash-alt"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -85,21 +88,22 @@
                                         <div class="form-outline form-white mb-4">
                                             <input type="text" id="name" required class="form-control form-control-lg"
                                                 siez="17" placeholder="Cardholder's Name" name="name">
-                                            <label class="form-label" for="name"
-                                                style="margin-left: 0px;">Cardholder's Name</label>
+                                            <label class="form-label" for="name" style="margin-left: 0px;">Cardholder's
+                                                Name</label>
                                         </div>
 
                                         <div class="form-outline form-white mb-4">
-                                            <input type="email" id="email" name="email" required class="form-control form-control-lg"
-                                                siez="17" placeholder="1234 5678 9012 3457" minlength="19"
-                                                maxlength="19">
-                                            <label class="form-label" for="email" style="margin-left: 0px;">Email</label>
+                                            <input type="email" id="email" name="email" required
+                                                class="form-control form-control-lg" siez="17"
+                                                placeholder="1234 5678 9012 3457" minlength="19" maxlength="19">
+                                            <label class="form-label" for="email"
+                                                style="margin-left: 0px;">Email</label>
                                         </div>
 
                                         <div class="form-outline form-white mb-4">
-                                            <input type="text" id="card_number" name="card_number" required class="form-control form-control-lg"
-                                                siez="17" placeholder="1234 5678 9012 3457" minlength="19"
-                                                maxlength="19">
+                                            <input type="text" id="card_number" name="card_number" required
+                                                class="form-control form-control-lg" siez="17"
+                                                placeholder="1234 5678 9012 3457" minlength="19" maxlength="19">
                                             <label class="form-label" for="card_number" style="margin-left: 0px;">Card
                                                 Number</label>
                                         </div>
@@ -107,16 +111,17 @@
                                         <div class="row mb-4">
                                             <div class="col-md-6">
                                                 <div class="form-outline form-white">
-                                                    <input type="text" id="card_expiry" name="card_expiry" required class="form-control form-control-lg"
-                                                        placeholder="MM/YYYY" size="7" minlength="7" maxlength="7">
+                                                    <input type="text" id="card_expiry" name="card_expiry" required
+                                                        class="form-control form-control-lg" placeholder="MM/YYYY"
+                                                        size="7" minlength="7" maxlength="7">
                                                     <label class="form-label" for="card_expiry"
                                                         style="margin-left: 0px;">Expiration</label>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-outline form-white">
-                                                    <input type="password" id="card_cvv" name="card_cvv"
-                                                        required class="form-control form-control-lg" placeholder="●●●" size="1"
+                                                    <input type="password" id="card_cvv" name="card_cvv" required
+                                                        class="form-control form-control-lg" placeholder="●●●" size="1"
                                                         minlength="3" maxlength="3">
                                                     <label class="form-label" for="card_cvv"
                                                         style="margin-left: 0px;">Cvv</label>
@@ -128,19 +133,29 @@
 
                                         <div class="d-flex justify-content-between">
                                             <p class="mb-2">Subtotal</p>
-                                            <p class="mb-2">${{ number_format($carts->sum('product.price'), 2) }}</p>
+                                            <p class="mb-2">${{ number_format($carts->sum(function($q) {
+                                                return $q->product->price * $q->quantity;
+                                                }), 2) }}</p>
                                         </div>
 
                                         <div class="d-flex justify-content-between mb-4">
                                             <p class="mb-2">Total(Incl. taxes)</p>
-                                            <p class="mb-2">${{ number_format($carts->sum('product.price') + (
-                                                $carts->sum('product.price') * 0.15 ), 2) }}</p>
+                                            <p class="mb-2">${{ number_format($carts->sum(function($q) {
+                                                return $q->product->price * $q->quantity;
+                                                }) + (
+                                                $carts->sum(function($q) {
+                                                return $q->product->price * $q->quantity;
+                                                }) * 0.15 ), 2) }}</p>
                                         </div>
 
                                         <button type="submit" class="btn btn-info btn-block btn-lg">
                                             <div class="d-flex justify-content-between">
-                                                <span>${{ number_format($carts->sum('product.price') + (
-                                                    $carts->sum('product.price') * 0.15 ), 2) }}</span>
+                                                <span>${{ number_format($carts->sum(function($q) {
+                                                    return $q->product->price * $q->quantity;
+                                                    }) + (
+                                                    $carts->sum(function($q) {
+                                                    return $q->product->price * $q->quantity;
+                                                    }) * 0.15 ), 2) }}</span>
                                                 <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                                             </div>
                                         </button>
@@ -175,8 +190,20 @@
         .fail(function(error) {
             console.log(error)
         })
-
     }
+
+    $(".product-quantity").change(function (event) {
+        const data = {
+            'quantity': event.target.value,
+        };
+        $.post(rootApiUrl + `/cart/${$(this).data('cart_id')}/update`, data, function(response) {
+            console.log(response)
+                let cartCounter = $('.cart-counter');
+            })
+        .fail(function(error) {
+            console.log(error)
+        })
+    })
 
 </script>
 @endpush
